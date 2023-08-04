@@ -1,0 +1,12 @@
+.product-card-container-wrapper{
+    margin-top: 30px;
+}
+
+.product-container{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+
+}
