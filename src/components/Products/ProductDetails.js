@@ -19,7 +19,6 @@ const ProductDetails = () => {
 
   useEffect(() => {
     fetchProductDetails();
-    console.log("useeefecet")
   },[])
 
   const {image , title , description , rating , price } = productDetails;
@@ -30,10 +29,35 @@ const ProductDetails = () => {
         <img src={image} alt="" />
       </div>
       <div className="description-wrapper">
-        <h2>{title}</h2>
-        <h6>{rating?.rate}</h6>
-        <h6>{price}</h6>
-        <h6>{description}</h6>
+        <h1>{title}</h1>
+        <div
+            style={{
+              display: "flex",
+              gap: "10px",
+              alignItems: "center",
+              marginTop:"-20px"
+              
+            }}
+          >
+            {" "}
+            <box-icon
+              name="star"
+              type="solid"
+              color="white"
+              style={{
+                backgroundColor: rating?.rate < 3.7 ? "red" : "green",
+                borderRadius: "50%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "2px",
+              }}
+            ></box-icon>
+            <h4 style={{fontSize:"20px"}}>{rating?.rate} </h4>
+          </div>
+
+        <p className='price'>${price}</p>
+        <p className='description'>{description}</p>
         <button>Add To Cart</button>
       </div>
      </div>

@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import shopping_logo from "../../images/shopping_logo.png";
 import "boxicons";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -12,9 +13,9 @@ const Header = () => {
 
       <div className="pages-wrapper">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+         <Link className="link" to='/'> <li>Home</li></Link>
+         <Link className="link" to='/about'> <li>About</li></Link>
+         <li>contact</li>
         </ul>
       </div>
 

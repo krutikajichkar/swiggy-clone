@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import ProductCardContainer from './components/Products/ProductCardContainer';
 import ProductDetails from './components/Products/ProductDetails';
 import { Outlet, createBrowserRouter } from 'react-router-dom';
+import About from "./components/About/About";
 
  function App() {
   return (
@@ -23,7 +24,12 @@ export const appRouter = createBrowserRouter([{
   },{
     path:'/product-details/:id',
     element:<ProductDetails/>
-  }]
+  },
+  {
+    path:'/about',
+    element:<About/>
+  }
+]
 }])
 
 

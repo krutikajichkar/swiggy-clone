@@ -1,5 +1,5 @@
 .product-card-container-wrapper{
-    margin-top: 150px;
+    margin-top: 120px;
    
 }
 
@@ -40,3 +40,23 @@
     color: black;
 }
 
+.categories-wrapper{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    
+}
+
+.categories-wrapper button{
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    
+}
+
+.categories-wrapper button:hover{
+    box-shadow: 0px 1px 2px 3px rgb(164, 202, 236);
+}
