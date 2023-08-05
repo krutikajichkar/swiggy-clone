@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ProductCardContainer.css";
 import ProductCard from "./ProductCard";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ProductCardContainer = () => {
   const [listOfProducts, setListOfProducts] = useState([]);
@@ -41,7 +42,7 @@ const ProductCardContainer = () => {
 
       <div className="product-container">
         {searchedListOfProducts?.map((prod) => {
-          return <ProductCard key={prod.id} productList={prod} />;
+          return <Link className="link" to={`/product-details/${prod.id}`} key={prod.id}><ProductCard  productList={prod} /></Link>
         })}
       </div>
     </div>

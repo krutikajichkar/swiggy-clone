@@ -1,3 +1,29 @@
-.product-card-container-wrapper{
-    margin-top: 30px ;
+.product-details-wrapper{
+    width:60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid green;
+}
+
+.product-details-container{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    border: 2px solid red;
+
+}
+
+.description-wrapper{
+    text-align: left;
+}
+
+.product-details-wrapper .product-details-container .image-wrapper img{
+    width: 400px;
+    height: 400px;
 }
