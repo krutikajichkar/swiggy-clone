@@ -1,13 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Header.css";
-import {UserContext} from "../../utils/UserContext";
 import shopping_logo from "../../images/shopping_logo.png";
 import "boxicons";
 import { Link } from "react-router-dom";
-
+import {useSelector} from "react-redux"
 
 const Header = () => {
-  const {userFirstName , userLastName} = useContext(UserContext)
+  const currentUser = useSelector((store) => store?.user?.users[0]);
+  const userCart = useSelector((store) => store?.cart?.items[0]);
+  console.log(userCart)
+
+
   return (
     <div className="header-wrapper">
       <div className="logo-wrapper">
@@ -22,10 +25,12 @@ const Header = () => {
         </ul>
       </div>
 
-      <div className="cart_logo">
-        <box-icon size="md" name="cart"></box-icon>
-      </div>
-      <div><p>{userFirstName}{userLastName}</p></div>
+      {currentUser && <div className="cart_logo">
+        <Link className="link" to={`/cart/${currentUser?.id}`}><box-icon size="md" name="cart"></box-icon>
+        <span>{(userCart?.products?.length)}</span>
+        </Link>
+      </div>}
+      <div><p className="font-bold">{currentUser?.username?.toUpperCase()}</p></div>
     </div>
   );
 };

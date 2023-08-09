@@ -1,40 +1,54 @@
-import React, { useContext, useState, useEffect } from "react";
-import UserContext from "../../utils/UserContext";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useDispatch ,useSelector} from "react-redux";
+import { addUser } from "../../utils/userSlice";
+import { useNavigate, useParams } from "react-router-dom";
+
+import { addItems } from "../../utils/cartSlice";
+
 
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [filteredUser, setFilteredUser] = useState();
   const [users, setUsers] = useState([]);
+ 
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+ 
+
+
   
 
    const fetchUsers = async() => {
     const response = await axios.get("https://fakestoreapi.com/users");
     setUsers(response.data);
-    setFilteredUser(response.data)
     console.log(response.data);
    }
 
+ 
+
    useEffect(() => {
     fetchUsers()
+  
    } ,[])
 
    
+    
+   
     const handleLogin = () => {
       const filterUser = users.filter((user) => user.email === email);
-      setFilteredUser(filterUser)
-      alert("logged in as" + filteredUser?.email)
+      dispatch(addUser(filterUser))
+      
+      
+      navigate('/')
     }
 
 
-  const {userFirstName , userLastName} = useContext(UserContext);
- 
+
   return (
-    <div className=" flex justify-center mt-[200px] flex-col ">
-      <UserContext.Provider
-        value={{ userFirstName : filteredUser?.firstname , userLastName: filteredUser?.lastname }}
-      >
+    <div className=" flex justify-center mt-[200px]  ">
+     
         <div className="bg-gray-300 flex flex-col gap-5 px-8 py-10 justify-center w-3/12 rounded">
           <input
             className="px-4 py-2 w-[100%] rounded-md"
@@ -59,19 +73,9 @@ const Login = () => {
             </button>
           </div>
         </div>
-      { filteredUser?.map((us) => {
-        return(
-       <div className="flex flex-col">
-         <div>{us.email} , {us.password}</div>
-       </div>
-        )
-      }) }
-      <div>
-        <p>
-          Logged in as{userFirstName} {userLastName}
-        </p>
-      </div>
-      </UserContext.Provider>
+    
+     
+    
     </div>
   );
 };
